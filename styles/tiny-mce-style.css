@@ -1,0 +1,8 @@
+body,table,td {
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 13px;
+	line-height: 20px;
+}
+td {
+	    vertical-align: text-top;
+}

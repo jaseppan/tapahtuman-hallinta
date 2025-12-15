@@ -1,0 +1,36 @@
+﻿<?php
+checkPermission(1);
+$menuData[] = array('id'=>1, 'name' => 'main-menu', 'item'=>'Haku', 'url'=>'index.php', 'access'=>1, 'type'=>'single'); 
+$menuData[] = array('id'=>24, 'name' => 'main-menu', 'item'=>'Henkilöiden lisääminen', 'url'=>'#', 'access'=>1, 'type'=>'dropbtn');
+$menuData[] = array('id'=>25, 'name' => 'main-menu', 'item'=>'Lisää henkilö', 'url'=>'index.php?page=user-add-single', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>24);
+$menuData[] = array('id'=>27, 'name' => 'main-menu', 'item'=>'CSV-tiedoston tuominen', 'url'=>'index.php?page=import-csv', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>24);
+$menuData[] = array('id'=>2, 'name' => 'main-menu', 'item'=>'Usean henkilön lisääminen batch', 'url'=>'index.php?page=user-add', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>24);
+$menuData[] = array('id'=>3, 'name' => 'main-menu', 'item'=>'Listat', 'url'=>'#', 'access'=>1, 'type'=>'dropbtn');
+$menuData[] = array('id'=>4, 'name' => 'main-menu', 'item'=>'Kaikki', 'url'=>'index.php?page=user-list', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>5, 'name' => 'main-menu', 'item'=>'Henkilökunta', 'url'=>'index.php?page=user-list&profile-filter=henkilokunta', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>6, 'name' => 'main-menu', 'item'=>'Kurssilaiset (ilmoittautumistiedot)', 'url'=>'index.php?page=user-list&profile-filter-field=20&profile-filter=kurssilainen&selected-columns=20+59+15+16+17+13+18+61+62+28+32+31+56+52+53+64+51+33+43+34+50+65+66+68+69+70+71+72+73+74+75+76+77+78+79+80&profile-display=show', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>3);
+//$menuData[] = array('id'=>7, 'name' => 'main-menu', 'item'=>'Kurssilaiset (majoitus ja ruokailu)', 'url'=>'index.php?page=user-list&profile-filter-field=20&profile-filter=kurssilainen&selected-columns=59+28+32+31+52+53+64+33+43+34&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>8, 'name' => 'main-menu', 'item'=>'Talkoolaiseksi ilmoittautuneet', 'url'=>'index.php?page=user-list&profile-filter-field=60&profile-filter=1&selected-columns=15+16+17+13+18+61+62+63&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>8, 'name' => 'main-menu', 'item'=>'Talkoolaiset', 'url'=>'index.php?page=user-list&profile-filter=talkoolainen', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>26, 'name' => 'main-menu', 'item'=>'Opettajat', 'url'=>'index.php?page=user-list&profile-filter-field=20&profile-filter=opettaja&selected-columns=20+59+18&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>26, 'name' => 'main-menu', 'item'=>'Seminaarin alustajat', 'url'=>'index.php?page=user-list&profile-filter-field=20&profile-filter=alustaja', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>9, 'name' => 'main-menu', 'item'=>'Taiteilijat', 'url'=>'index.php?page=user-list&profile-filter=taiteilija', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>10, 'name' => 'main-menu', 'item'=>'Majoittujat', 'url'=>'index.php?page=user-list&profile-filter-field=28&profile-filter=kylla&selected-columns=20+59+32+31+56+52+53+64+51&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>11, 'name' => 'main-menu', 'item'=>'Ruokailijat', 'url'=>'index.php?page=user-list&profile-filter=kylla&selected-columns=34&profile-filter-field=33&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>12, 'name' => 'main-menu', 'item'=>'Vienaan menijät', 'url'=>'index.php?page=user-list&profile-filter-field=45&profile-filter=kylla&selected-columns=46+47+48+54+55+49&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>12, 'name' => 'main-menu', 'item'=>'Yhteystiedot', 'url'=>'index.php?page=user-list&selected-columns=20+59+18&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>12, 'name' => 'main-menu', 'item'=>'Seuranta', 'url'=>'index.php?page=user-list&selected-columns=20+59+65+66+67&profile-display=show', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>21, 'name' => 'main-menu', 'item'=>'Luo oma lista', 'url'=>'index.php?page=custom-list-creator', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>3);
+$menuData[] = array('id'=>13, 'name' => 'main-menu', 'item'=>'Tulostukset', 'url'=>'#', 'access'=>1, 'type'=>'dropbtn');
+$menuData[] = array('id'=>14, 'name' => 'main-menu', 'item'=>'Majoitustiedot', 'url'=>'index.php?page=accommodation-report&textareasize=large', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>13);
+$menuData[] = array('id'=>15, 'name' => 'main-menu', 'item'=>'Nimilaput', 'url'=>'index.php?page=nameplate&textareasize=large', 'access'=>1, 'type'=>'dropdown-content', 'parent'=>13);
+$menuData[] = array('id'=>16, 'name' => 'main-menu', 'item'=>'Ruokaliput', 'url'=>'index.php?page=meal-ticket&textareasize=large', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>13);
+$menuData[] = array('id'=>17, 'name' => 'main-menu', 'item'=>'Ruokailulista', 'url'=>'index.php?page=diner-list&textareasize=large', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>13);
+$menuData[] = array('id'=>18, 'name' => 'main-menu', 'item'=>'Työkalut', 'url'=>'#', 'access'=>2, 'type'=>'dropbtn');
+$menuData[] = array('id'=>19, 'name' => 'main-menu', 'item'=>'Listattavat henkilöt', 'url'=>'index.php?page=manage_listed_users', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>18);
+$menuData[] = array('id'=>20, 'name' => 'main-menu', 'item'=>'Esiintyjä-tapahtuma -linkit', 'url'=>'index.php?page=band-events-links', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>18);
+$menuData[] = array('id'=>22, 'name' => 'main-menu', 'item'=>'Päivitä artistit', 'url'=>'index.php?page=artist-data-updater', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>18);
+$menuData[] = array('id'=>22, 'name' => 'main-menu', 'item'=>'Päivitä ateriat', 'url'=>'index.php?page=diner-data-updater', 'access'=>2, 'type'=>'dropdown-content', 'parent'=>18);
+$menuData[] = array('id'=>23, 'name' => 'main-menu', 'item'=>'Hallinnan käyttäjätiedot', 'url'=>'index.php?page=admin-manager', 'access'=>3, 'type'=>'dropdown-content', 'parent'=>18);
+$menuData[] = array('id'=>26, 'name' => 'main-menu', 'item'=>'Ohjeet', 'url'=>'index.php?page=help', 'access'=>1, 'type'=>'single');
+?>
