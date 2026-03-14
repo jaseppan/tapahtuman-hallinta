@@ -90,7 +90,16 @@ function removeqsvar($url, $varname) {
 // Taulukon luominen
 
 $fields_id = $fields->id; // kenttien id:t
-$fields_label = $fields->label;	// kenttien labelit?>
+$fields_label = $fields->label;	// kenttien labelit
+
+// DEBUG: Tarkista profiilitietojen lataus
+echo '<!-- DEBUG: $profile->user_id bestaat: ' . (isset($profile->user_id) ? 'JOO' : 'EI') . ' -->';
+if(isset($profile->user_id)) {
+	echo '<!-- DEBUG: user_id count: ' . count($profile->user_id) . ', first 5: ' . json_encode(array_slice($profile->user_id, 0, 5)) . ' -->';
+}
+echo '<!-- DEBUG: $user->id count: ' . count($user->id) . ', first 3: ' . json_encode(array_slice($user->id, 0, 3)) . ' -->';
+
+?>
 
 <div class="table-container">
 <table id="table" class="table">
@@ -114,6 +123,11 @@ if (isset($_GET['profile-display']) && $_GET['profile-display']) {
 
 	// ShowProfile -funktioon tarvittavia muuttujia
 	$profileIds = array_keys(preg_grep("/" . $user->id[$x] . "/A", $profile->user_id)); // KÄYTTÄJÄN PROFIILITIETOJEN ID:T 
+	
+	// DEBUG: Kirjoita error-logiin
+	if($x < 3) { // vain kolme ensimmäistä
+		error_log('USER ' . $x . ': id=' . $user->id[$x] . ', profileIds=' . json_encode($profileIds));
+	}
 
 	$profile_field_id = [];
 	$profile_value = [];

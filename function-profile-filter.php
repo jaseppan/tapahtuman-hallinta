@@ -23,11 +23,8 @@ function profileFilter($filter, $filter_field, $mysqli, $hidden_persons = []) {
 		  $profile_id = array_remove($profile_id,$blackListItem,true);
 		}
 	}
-	// kysely rajatuilla henkilöillä	
-	$sql = "`user_id` = " . $profile_id[0];
-	for ($y = 1; $y <= count($profile_id)-1; $y++) {
-		$sql .= " OR `user_id` = " . $profile_id[$y];
-	}
+	// kysely rajatuilla henkilöillä - käytetään IN() operaattoria OR ketjun sijaan
+	$sql = "`user_id` IN (" . implode(",", $profile_id) . ")";
 	return $sql;
 }
 
@@ -54,11 +51,8 @@ function profileFilter2($filter, $filter_field, $mysqli, $column, $hidden_person
 	  $profile_id = array_remove($profile_id,$blackListItem,true);
 	}
 
-	// kysely rajatuilla henkilöillä	
-	$sql = "`" . $column . "` = " . $profile_id[0];
-	for ($y = 1; $y <= count($profile_id)-1; $y++) {
-		$sql .= " OR `" . $column . "` = " . $profile_id[$y];
-	}
+	// kysely rajatuilla henkilöillä - käytetään IN() operaattoria OR ketjun sijaan
+	$sql = "`" . $column . "` IN (" . implode(",", $profile_id) . ")";
 	return $sql;
 }
 
