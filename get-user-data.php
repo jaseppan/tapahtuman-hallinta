@@ -107,13 +107,9 @@ if( !empty( $tail ) ) {
 	$sql =  $sql . " WHERE" . $tail;	
 }
 
-// DEBUG: Kirjoita SQL-kysely ja -tulos error-logiin
-error_log('PROFILE QUERY SQL: ' . $sql);
-
 // Haku tietokannasta
 
 $result = $mysqli->query($sql);
-error_log('PROFILE QUERY RESULTS: ' . ($result ? $result->num_rows : 'ERROR') . ' rows');
 if ($result && $result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$profile->id[] = $row["id"];			
@@ -121,9 +117,8 @@ if ($result && $result->num_rows > 0) {
 		$profile->field_id[] = $row["field_id"];
 		$profile->value[] = $row["value"];
 	}
-	error_log('PROFILE ARRAYS POPULATED: user_id count=' . count($profile->user_id));
 } else {
-	error_log('PROFILE QUERY FAILED OR NO RESULTS');
+	// Ei virheitä, vain ei tuloksia
 }
 
 /****************************************** Tuo käyttäjät ****************************************/

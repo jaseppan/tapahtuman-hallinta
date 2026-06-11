@@ -123,11 +123,6 @@ if (isset($_GET['profile-display']) && $_GET['profile-display']) {
 
 	// ShowProfile -funktioon tarvittavia muuttujia
 	$profileIds = array_keys(preg_grep("/" . $user->id[$x] . "/A", $profile->user_id)); // KÄYTTÄJÄN PROFIILITIETOJEN ID:T 
-	
-	// DEBUG: Kirjoita error-logiin
-	if($x < 3) { // vain kolme ensimmäistä
-		error_log('USER ' . $x . ': id=' . $user->id[$x] . ', profileIds=' . json_encode($profileIds));
-	}
 
 	$profile_field_id = [];
 	$profile_value = [];
