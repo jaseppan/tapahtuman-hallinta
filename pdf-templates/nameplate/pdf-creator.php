@@ -44,7 +44,7 @@ $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 
 // set margins
-$pdf->SetMargins(12, 18, 11);
+$pdf->SetMargins(15, 20, 0);
 $pdf->SetHeaderMargin(0);
 $pdf->SetFooterMargin(0);
 
@@ -52,7 +52,7 @@ $pdf->SetFooterMargin(0);
 $pdf->setPrintFooter(false);
 
 // set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, 9);
+$pdf->SetAutoPageBreak(TRUE, 0);
 
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);

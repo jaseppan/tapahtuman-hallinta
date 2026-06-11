@@ -116,7 +116,12 @@ if(!$_POST){
 		// Muodostetaan listat option value ja näyttöä varten
 		for($x = 0; $x < count($person); $x++){
 			$tmp = explode('|', $person[$x]);
-			$personView[] = $tmp[0];
+			// Lisää kurssi näyttöön jos se on olemassa
+			$display = $tmp[0];
+			if(!empty($tmp[2])) {
+				$display .= " (" . $tmp[2] . ")";
+			}
+			$personView[] = $display;
 			$personPost[] = $tmp[1] . "|" . $tmp[2];
 		}
 	} else {
@@ -163,17 +168,24 @@ if(!$_POST){
 		}
 		if($_POST['template'] == 1) {
 
-			// $table .= "<td style=\"line-height: 28px; height: 193px;\"><span style=\"font-size: 26px; line-height: 8px; text-align: right\">" . $tmp[0] . "</span><br><span style=\"font-size: 20px; line-height: 8px; text-align: right; \">" . $tmp[1] . "</span></p></td>";
-			$table .= "<td style=\"line-height: 33%\">
+			$table .= "<td style=\"line-height: 28px; height: 197px;\"><span style=\"font-size: 26px; line-height: 8px; text-align: left;\">" . $tmp[0] . "</span><br>
+			<span style=\"font-size: 20px; line-height: 28px; text-align: left; \">" . (strpos($tmp[1], '–') !== false ? substr($tmp[1], 0, strpos($tmp[1], '–')) : $tmp[1]) . "</span></p></td>";
+			/* $table .= "<td style=\"line-height: 23px;\">
 
-					<span style=\"font-size: 25px; text-align: right; line-height:10px; margin-bottom:5px; padding-bottom:0; \">" . $tmp[0] . "</span><br>
-					<span style=\"font-size: 18px; text-align: right; line-height:20px; margin-top: 0; \">" . $tmp[1] . "</span>
+					<span style=\"font-size: 25px; text-align: right; line-height:20px; margin-top: 10px; margin-bottom:35px; padding-bottom:0;  \">" . $tmp[0] . "</span><br>
+					<span style=\"font-size: 18px; text-align: right; line-height:20px; margin-top: 30px; \">" . $tmp[1] . "</span>
 	
-			</td>";
+			</td>"; */
 			
 		} elseif ($_POST['template'] == 2) {
-			// $table .= "<td style=\"line-height: 28px; height: 193px;\"><span style=\"font-size: 26px; line-height: 30px !important; text-align: right; margin-bottom: 8px\">" . $tmp[0] . "</span><br><br><br><span style=\"font-size: 20px; line-height: 20px; text-align: right; \">" . $tmp[1] . "</span></p></td>";	
-			$table .= "<td style=\"line-height: 28px; height: 193px;\"><span style=\"font-size: 26px; line-height: 30px !important; text-align: right; margin-bottom: 8px\">" . $tmp[0] . "</span><br><br><br><span style=\"font-size: 20px; line-height: 20px; text-align: right; \">" . $tmp[1] . "</span></p></td>";	
+			$table .= "<td style=\"line-height: 28px; height: 197px;\"><span style=\"font-size: 26px; line-height: 30px !important; text-align: left; margin-bottom: 8px\">" . $tmp[0] . "</span><br><br><br>
+			<span style=\"font-size: 20px; line-height: 20px; text-align: left; \">" . $tmp[1] . "</span></p></td>";	
+					/* $table .= "<td style=\"line-height: 23px;\">template 2
+
+							<span style=\"font-size: 25px; text-align: right; line-height:20px; margin-top: 10px; margin-bottom:35px; padding-bottom:0;  \">" . $tmp[0] . "</span><br>
+							<span style=\"font-size: 18px; text-align: right; line-height:20px; margin-top: 30px; \">" . $tmp[1] . "</span>
+			
+					</td>"; */
 		
 		}
 		if($i & 1) {
@@ -184,7 +196,7 @@ if(!$_POST){
 	$table .= "</tr>";
 		
 	echo "<form action = 'pdf-templates/nameplate/pdf-creator.php' method = 'post' target='_blank'>";
-		echo "<textarea name='table'>" . "<table style=\"padding:68 10 20;\">" .  $table . "</table>" . "</textarea>";
+		echo "<textarea name='table'>" . "<table style=\"padding:20 10 20;\">" .  $table . "</table>" . "</textarea>";
 		echo '<input type="hidden" name="doc-title" value="' . $docTitle . '"/>';
 		echo '<input type="hidden" name="file-name" value="' . $fileName . '"/>';
 		echo "<br><input type='submit' name='submit' value ='Luo pdf'>";
