@@ -168,7 +168,7 @@ if(!$_POST){
 		}
 		if($_POST['template'] == 1) {
 
-			$table .= "<td style=\"line-height: 28px; height: 197px;\"><span style=\"font-size: 26px; line-height: 8px; text-align: left;\">" . $tmp[0] . "</span><br>
+			$table .= "<td style=\"line-height: 30px; height: 197px;\"><span style=\"font-size: 26px; line-height: 8px; text-align: left;\">" . $tmp[0] . "</span><br>
 			<span style=\"font-size: 20px; line-height: 28px; text-align: left; \">" . (strpos($tmp[1], '–') !== false ? substr($tmp[1], 0, strpos($tmp[1], '–')) : $tmp[1]) . "</span></p></td>";
 			/* $table .= "<td style=\"line-height: 23px;\">
 
