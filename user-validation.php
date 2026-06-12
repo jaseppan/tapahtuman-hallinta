@@ -43,7 +43,8 @@ if ($result->num_rows > 0) {
 	}
 }
 
-if($value != "-") {
+// Sallitaan sähköpostiosoitteiden tuplaantuminen, mutta ei nimien tuplaantumista. Sähköpostiosoitteet saattavat olla samoja eri henkilöillä, mutta nimi ei saisi tuplaantua.
+/* if($value != "-") {
 	if(isset($saved_emails) && $saved_emails) {
 		if(count($saved_emails) > 1) {
 			$errorMsg .= "Sähköpostiosoitteet " . $saved_emails[0];
@@ -61,7 +62,7 @@ if($value != "-") {
 			++$errorCounter;
 		}	
 	}
-}
+} */
 
 // Huomautuksen ohitus jos validoitu aikaisemmin
 if( !isset($_GET["status"]) || $_GET["status"] != "validated") {
