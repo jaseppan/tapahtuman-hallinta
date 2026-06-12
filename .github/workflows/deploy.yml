@@ -1,0 +1,38 @@
+name: Deploy Tapahtuman Hallinta
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Production Server
+      env:
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        SERVER_IP: 217.64.35.103
+        SSH_PORT: 22
+        PLUGIN_DIR: /var/www/vhosts/sommelo.net/httpdocs/tapahtuman-hallinta
+      run: |
+        # Install sshpass for password-based SSH authentication
+        sudo apt-get install -y sshpass
+        # Use rsync with sshpass to deploy the application to the server
+        sshpass -p $SSH_PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no -p $SSH_PORT"  \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='.gitignore' \
+          --exclude='.vscode/' \
+          --exclude='tests/' \
+          --exclude='.DS_Store' \
+          --exclude='*/.DS_Store' \
+          --exclude='node_modules/' \
+          --exclude='*/node_modules/' \
+          --exclude='htaccess.txt' \
+        ./ $SSH_USERNAME@$SERVER_IP:$PLUGIN_DIR
